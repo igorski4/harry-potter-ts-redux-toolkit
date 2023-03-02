@@ -14,6 +14,7 @@ export const MainPage: React.FC = () => {
   const { cards } = useAppSelector((state) => state.cardReducer);
   const { setSchool } = schoolSlice.actions;
   const { like } = useAppSelector((state) => state.likeReducer);
+  const { pageCount } = useAppSelector((state) => state.paginationReducer);
 
   useEffect(() => {
     dispatch(fetchCard());
@@ -34,7 +35,7 @@ export const MainPage: React.FC = () => {
     <>
       <Header />
       <Main />
-      <Footer />
+      {!!pageCount && <Footer />}
     </>
   );
 };
