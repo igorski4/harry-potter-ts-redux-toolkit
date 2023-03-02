@@ -1,10 +1,10 @@
 import React from "react";
-import { useAppDispatch } from "../../../hooks/redux";
-import { Card as CardInterface } from "../../../models/Card";
+import { useAppDispatch } from "../../hooks/redux";
+import { Card as CardInterface } from "../../models/Card";
 import cl from "./Card.module.css";
 import redHeart from "./redHeart.svg";
 import whiteHeart from "./whiteHeart.svg";
-import { likeSlice } from "../../../store/reducers/LikeSlice";
+import { likeSlice } from "../../store/reducers/LikeSlice";
 
 interface CardProps {
   card: CardInterface;
@@ -14,6 +14,7 @@ interface CardProps {
 export const Card: React.FC<CardProps> = ({ card, like }) => {
   const dispatch = useAppDispatch();
   const { addLike, deleteLike } = likeSlice.actions;
+
   return (
     <div className={cl.item}>
       <img

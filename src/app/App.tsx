@@ -1,35 +1,17 @@
-import React, { useEffect } from "react";
-import { Header } from "../components/Header/Header";
-import { Main } from "../components/Main/Main";
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { fetchCard } from "../store/reducers/ActionCreators";
-import { schoolSlice } from "../store/reducers/SchoolSlice";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { LikesPage } from "../pages/LikesPage";
+import { MainPage } from "../pages/MainPage";
+
 import "./global/styles/global.css";
 
-function App() {
-  const dispatch = useAppDispatch();
-  const { cards } = useAppSelector((state) => state.cardReducer);
-  const { setSchool } = schoolSlice.actions;
-  const { like } = useAppSelector((state) => state.likeReducer);
-
-  useEffect(() => {
-    dispatch(fetchCard());
-  }, []);
-
-  useEffect(() => {
-    dispatch(setSchool(cards));
-  }, [cards]);
-
-  useEffect(() => {
-    localStorage.setItem("likes", JSON.stringify(like));
-  }, [like]);
-
+export const App: React.FC = () => {
   return (
-    <>
-      <Header />
-      <Main />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />}></Route>
+        <Route path="/likes" element={<LikesPage />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
-}
-
-export default App;
+};

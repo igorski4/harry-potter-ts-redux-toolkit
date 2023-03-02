@@ -8,4 +8,31 @@
   grid-template-rows: repeat(auto-fill, 1fr);
   justify-content: center;
   gap: 20px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 12px;
+       column-gap: 12px;
+  justify-content: center;
+  position: fixed;
+  bottom: 23px;
+  right: 40px;
+  width: 157px;
+  height: 48px;
+  font-size: 16px;
+  line-height: 28px;
+  color: #3F444A;
+  box-shadow: 0px 8px 35px rgba(255, 70, 70, 0.136);
+  border-radius: 48px;
+  transition: all 0.35s;
+}
+.btn:hover {
+  transform: translateY(-5px);
+  background-color: rgba(244, 80, 80, 0.4745098039);
+  box-shadow: 0px 8px 35px rgba(94, 4, 4, 0.73);
+}
+.btn:active {
+  transform: scale(1.05);
 }/*# sourceMappingURL=Main.module.css.map */
