@@ -1,0 +1,39 @@
+.item {
+  position: relative;
+  background: #FFFFFF;
+  outline: 1px solid #DEE2E6;
+  border-radius: 4px;
+}
+.item__svg {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
+.item__svg:hover {
+  transform: translateY(-2px);
+}
+.item__svg:active {
+  transform: scale(1.03);
+}
+.item__img {
+  width: 334px;
+  height: 292px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px 4px 0px 0px;
+}
+.item__text_wrapper {
+  padding: 24px 25px 25px 24px;
+}
+.item__title {
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+  color: #152536;
+}
+.item__text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: #152536;
+}/*# sourceMappingURL=Card.module.css.map */
