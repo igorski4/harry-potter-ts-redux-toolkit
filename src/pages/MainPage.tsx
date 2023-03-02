@@ -5,6 +5,9 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { fetchCard } from "../store/reducers/ActionCreators";
 import { schoolSlice } from "../store/reducers/SchoolSlice";
 import "../app/global/styles/global.css";
+import { Footer } from "../components/Footer/Footer";
+import { usePaginationPage } from "../hooks/usePaginationPage";
+import { useArrPage } from "../hooks/useArrPage";
 
 export const MainPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -24,10 +27,14 @@ export const MainPage: React.FC = () => {
     localStorage.setItem("likes", JSON.stringify(like));
   }, [like]);
 
+  usePaginationPage();
+  useArrPage();
+
   return (
     <>
       <Header />
       <Main />
+      <Footer />
     </>
   );
 };

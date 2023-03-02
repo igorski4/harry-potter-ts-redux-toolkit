@@ -10,6 +10,7 @@ export const Main: React.FC = () => {
   const { cards } = useAppSelector((state) => state.cardReducer);
   const { like } = useAppSelector((state) => state.likeReducer);
   const { input, select } = useAppSelector((state) => state.searchReducer);
+  const { tempPage, limit } = useAppSelector((state) => state.paginationReducer);
 
   return (
     <div className={clsx("container", cl.main, cl.main__grid)}>
@@ -19,6 +20,7 @@ export const Main: React.FC = () => {
             card.house === select || select === "All school" || (!card.house && select === "Doesn't have a school")
         )
         .filter((card) => card.name.trim().toLowerCase().includes(input.trim().toLowerCase()))
+        .slice(tempPage * limit, (tempPage + 1) * limit)
         .map((card) => (
           <Card key={card.id} card={card} like={like.includes(card.name)}></Card>
         ))}

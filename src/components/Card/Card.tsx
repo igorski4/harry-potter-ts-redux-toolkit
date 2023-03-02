@@ -17,12 +17,14 @@ export const Card: React.FC<CardProps> = ({ card, like }) => {
 
   return (
     <div className={cl.item}>
-      <img
-        className={cl.item__svg}
-        onClick={() => (like ? dispatch(deleteLike(card.name)) : dispatch(addLike(card.name)))}
-        src={like ? redHeart : whiteHeart}
-        alt={like ? "❤" : "♡"}
-      />
+      <div className={cl.svg_wrapper}>
+        <img
+          className={cl.svg}
+          onClick={() => (like ? dispatch(deleteLike(card.name)) : dispatch(addLike(card.name)))}
+          src={like ? redHeart : whiteHeart}
+          alt={like ? "❤" : "♡"}
+        />
+      </div>
       <img
         className={cl.item__img}
         src={

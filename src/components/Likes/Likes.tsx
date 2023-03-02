@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import React from "react";
 import cl from "./Likes.module.css";
 import { Link } from "react-router-dom";
@@ -8,6 +7,7 @@ import { useAppSelector } from "../../hooks/redux";
 export const Likes: React.FC = () => {
   const { cards } = useAppSelector((state) => state.cardReducer);
   const { like } = useAppSelector((state) => state.likeReducer);
+  const { limit, tempPage } = useAppSelector((state) => state.paginationReducer);
 
   return (
     <div className="container">
@@ -21,6 +21,7 @@ export const Likes: React.FC = () => {
       <div className={cl.main}>
         {cards
           .filter((card) => like.includes(card.name))
+          .slice(tempPage * limit, (tempPage + 1) * limit)
           .map((card) => (
             <Card key={card.id} card={card} like={like.includes(card.name)}></Card>
           ))}

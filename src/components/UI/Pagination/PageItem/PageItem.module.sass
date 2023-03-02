@@ -1,0 +1,32 @@
+.page
+  display: inline-block
+  padding: 12px 14px
+  font-size: 16px
+  line-height: 16px
+  color: #2c2c2cf6
+  background-color: #ffffff
+  border: 1px solid #2e2e2e43
+  cursor: pointer
+  &:hover 
+    transform: translateY(-3px)
+    border: 1px solid #1f1f1fb5
+    box-shadow: 0px 0px 5px #1f1f1f9f
+  &:active 
+    transform: translateY(-3px)
+    color: #070707d9
+    background: rgba(96, 96, 96, 0.368)
+
+.page_active
+  color: #dcdcdc
+  background: rgba(28, 28, 28, 0.615)
+  border: 1px solid #161616b5
+  &:active
+    background-color: #898989
+
+.page_disabled
+  color: #abb5be
+  cursor: default
+  &:hover
+    transform: translate(0)
+  &:active
+    background-color: #ffffff

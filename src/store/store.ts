@@ -4,8 +4,9 @@ import cardReducer from "./reducers/CardSlice";
 import schoolReducer from "./reducers/SchoolSlice";
 import searchReducer from "./reducers/SearchSlice";
 import likeReducer from "./reducers/LikeSlice";
+import paginationReducer from "./reducers/PaginationSlice";
 
-const rootReducer = combineReducers({ cardReducer, schoolReducer, searchReducer, likeReducer });
+const rootReducer = combineReducers({ cardReducer, schoolReducer, searchReducer, likeReducer, paginationReducer });
 
 export const setupStore = () => {
   return configureStore({
