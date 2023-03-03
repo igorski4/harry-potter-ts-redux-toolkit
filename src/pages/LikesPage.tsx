@@ -18,11 +18,11 @@ export const LikesPage: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchCard());
-    dispatch(setTempPage(0));
   }, []);
 
   useEffect(() => {
     dispatch(setSchool(cards));
+    dispatch(setTempPage(0));
   }, [cards]);
 
   useEffect(() => {
@@ -35,7 +35,6 @@ export const LikesPage: React.FC = () => {
 
   useEffect(() => {
     if (tempPage === pageCount) dispatch(setTempPage(tempPage - 1));
-    console.log(pageCount);
   }, [pageCount]);
 
   useEffect(() => {

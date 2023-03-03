@@ -37,15 +37,15 @@
   border-radius: 1000px;
   box-shadow: 0px 0px 6px #ada9a9;
 }
-.svg_wrapper:hover {
-  transform: translateY(-2px);
-}
-.svg_wrapper:active {
-  transform: scale(1.03);
-}
 
 .svg {
   position: absolute;
   left: 12px;
   top: 12px;
+}
+.svg:hover {
+  transform: scale(1.1);
+}
+.svg:active {
+  transform: scale(1.2);
 }/*# sourceMappingURL=Card.module.css.map */
