@@ -35,7 +35,7 @@ export const MainPage: React.FC = () => {
     <>
       <Header />
       <Main />
-      {!!pageCount && <Footer />}
+      {pageCount && <Footer />}
     </>
   );
 };

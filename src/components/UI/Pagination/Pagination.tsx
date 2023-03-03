@@ -16,7 +16,13 @@ export const Pagination: React.FC = () => {
     <div className={cl.wrapper}>
       <div>
         {pageCount > 5 && (
-          <PageItem key="🢠" onClick={() => dispatch(setTempPage(tempPage - 1))} disabledItem={tempPage === 0}>
+          <PageItem
+            key="🢠"
+            onClick={() => {
+              tempPage && dispatch(setTempPage(tempPage - 1));
+            }}
+            disabledItem={tempPage === 0}
+          >
             🢠
           </PageItem>
         )}

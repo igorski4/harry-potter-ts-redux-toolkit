@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { act } from "@testing-library/react";
 
 interface PaginationState {
   pageCount: number;

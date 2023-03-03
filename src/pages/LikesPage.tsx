@@ -11,14 +11,14 @@ import { schoolSlice } from "../store/reducers/SchoolSlice";
 export const LikesPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const { cards } = useAppSelector((state) => state.cardReducer);
-  const { limit, pageCount } = useAppSelector((state) => state.paginationReducer);
-  const { input, select } = useAppSelector((state) => state.searchReducer);
+  const { limit, pageCount, tempPage } = useAppSelector((state) => state.paginationReducer);
   const { setPageCount, setTempPage } = paginationSlice.actions;
   const { like } = useAppSelector((state) => state.likeReducer);
   const { setSchool } = schoolSlice.actions;
 
   useEffect(() => {
     dispatch(fetchCard());
+    dispatch(setTempPage(0));
   }, []);
 
   useEffect(() => {
@@ -31,8 +31,16 @@ export const LikesPage: React.FC = () => {
 
   useEffect(() => {
     dispatch(setPageCount(Math.ceil(cards.filter((card) => like.includes(card.name)).length / limit)));
-    dispatch(setTempPage(0));
-  }, [cards, limit, input, select]);
+  }, [limit, like, cards]);
+
+  useEffect(() => {
+    if (tempPage === pageCount) dispatch(setTempPage(tempPage - 1));
+    console.log(pageCount);
+  }, [pageCount]);
+
+  useEffect(() => {
+    dispatch(setTempPage(tempPage));
+  }, [tempPage]);
 
   useArrPage();
 
