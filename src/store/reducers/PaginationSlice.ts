@@ -6,10 +6,20 @@ interface PaginationState {
   tempPage: number;
   arrPage: number[];
 }
+
+interface SearchParams {
+  search?: string;
+  school: string;
+  page: number;
+  limit: number;
+}
+
+const searchParams: SearchParams = JSON.parse(sessionStorage.getItem("searchParams") || "[]");
+
 const initialState: PaginationState = {
   pageCount: 0,
-  limit: 4,
-  tempPage: 0,
+  limit: +searchParams.limit,
+  tempPage: +searchParams.page - 1,
   arrPage: [],
 };
 

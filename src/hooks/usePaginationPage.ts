@@ -23,6 +23,6 @@ export const usePaginationPage = (): void => {
         )
       )
     );
-    dispatch(setTempPage(0));
+    // dispatch(setTempPage(0));
   }, [cards, limit, input, select]);
 };

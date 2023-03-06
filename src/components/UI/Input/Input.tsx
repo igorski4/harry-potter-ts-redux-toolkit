@@ -12,10 +12,14 @@ interface InputProps {
 
 export const Input: React.FC<InputProps> = ({ value, changeInput, type, placeholder }) => {
   const dispatch = useAppDispatch();
+  const handlerInput = (e: string) => {
+    dispatch(changeInput(e));
+  };
+
   return (
     <input
       onChange={(e) => {
-        dispatch(changeInput(e.target.value));
+        handlerInput(e.target.value);
       }}
       value={value}
       type={type}

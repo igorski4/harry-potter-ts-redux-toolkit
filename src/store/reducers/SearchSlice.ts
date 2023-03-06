@@ -5,9 +5,18 @@ interface SearchState {
   select: string;
 }
 
+interface SearchParams {
+  search?: string;
+  school: string;
+  page: number;
+  limit: number;
+}
+
+const searchParams: SearchParams = JSON.parse(sessionStorage.getItem("searchParams") || "[]");
+
 const initialState: SearchState = {
-  input: "",
-  select: "All school",
+  input: searchParams.search ?? "",
+  select: searchParams.school,
 };
 
 export const searchlSlice = createSlice({

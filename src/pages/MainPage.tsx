@@ -8,6 +8,7 @@ import "../app/global/styles/global.css";
 import { Footer } from "../components/Footer/Footer";
 import { usePaginationPage } from "../hooks/usePaginationPage";
 import { useArrPage } from "../hooks/useArrPage";
+import { useSearchParams } from "react-router-dom";
 
 export const MainPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -15,6 +16,10 @@ export const MainPage: React.FC = () => {
   const { setSchool } = schoolSlice.actions;
   const { like } = useAppSelector((state) => state.likeReducer);
   const { pageCount } = useAppSelector((state) => state.paginationReducer);
+  const { input, select } = useAppSelector((state) => state.searchReducer);
+  const { tempPage, limit } = useAppSelector((state) => state.paginationReducer);
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     dispatch(fetchCard());
@@ -27,6 +32,14 @@ export const MainPage: React.FC = () => {
   useEffect(() => {
     localStorage.setItem("likes", JSON.stringify(like));
   }, [like]);
+
+  useEffect(() => {
+    let searchObj = {};
+    if (input) searchObj = { search: `${input}`, school: `${select}`, page: `${tempPage + 1}`, limit: `${limit}` };
+    else searchObj = { school: `${select}`, page: `${tempPage + 1}`, limit: `${limit}` };
+    setSearchParams(searchObj);
+    sessionStorage.setItem("searchParams", JSON.stringify(searchObj));
+  }, [input, select, tempPage, limit]);
 
   usePaginationPage();
   useArrPage();
